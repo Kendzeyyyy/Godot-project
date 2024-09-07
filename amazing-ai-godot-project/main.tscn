@@ -21,7 +21,6 @@ texture = ExtResource("1_20i36")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(82, 518)
-scale = Vector2(1, 1)
 script = ExtResource("3_rr481")
 
 [node name="PLayer" type="Sprite2D" parent="Player"]
@@ -33,7 +32,6 @@ shape = SubResource("RectangleShape2D_hm0tb")
 
 [node name="Obstacle2" type="CharacterBody2D" parent="."]
 position = Vector2(75, 81)
-scale = Vector2(1, 1)
 script = ExtResource("2_p1hja")
 
 [node name="Obstacle" type="Sprite2D" parent="Obstacle2"]
@@ -41,5 +39,4 @@ texture = ExtResource("1_fwicu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2"]
 position = Vector2(-0.500031, -0.500015)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_letb1")
