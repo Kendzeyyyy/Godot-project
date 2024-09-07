@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 300.0  # Speed of the player
+@export var speed: float = 500.0  # Speed of the player
 
 func _process(delta: float) -> void:
 	var direction = Vector2.ZERO
@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 	# Log if a collision occurs
 	if collision:
 		print("Player collided with: ", collision.get_collider())
+		get_tree().paused = true  # Pause the game
 
 	# Clamp the player within screen bounds
 	var screen_size = get_viewport_rect().size

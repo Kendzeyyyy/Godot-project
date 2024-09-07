@@ -1,18 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccwikhpxf6k0y"]
+[gd_scene load_steps=7 format=3 uid="uid://ccwikhpxf6k0y"]
 
 [ext_resource type="Texture2D" uid="uid://00cpw442qx20" path="res://godot_background.png" id="1_20i36"]
-[ext_resource type="Texture2D" uid="uid://cbtf6m76dj5d" path="res://icon.svg" id="1_fwicu"]
+[ext_resource type="Script" path="res://main.gd" id="1_xm6fh"]
 [ext_resource type="Texture2D" uid="uid://dnrvfsb55t75p" path="res://GodotPlayer.png" id="2_3d4xk"]
-[ext_resource type="Script" path="res://Obstacle.gd" id="2_p1hja"]
 [ext_resource type="Script" path="res://player.gd" id="3_rr481"]
+[ext_resource type="PackedScene" uid="uid://ljru4yxa7pnd" path="res://block.tscn" id="8_e0eok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hm0tb"]
 size = Vector2(100.5, 186.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_letb1"]
-size = Vector2(91, 99)
-
 [node name="Main" type="Node2D"]
+script = ExtResource("1_xm6fh")
+block_scene = ExtResource("8_e0eok")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(577.375, 326)
@@ -23,20 +22,16 @@ texture = ExtResource("1_20i36")
 position = Vector2(82, 518)
 script = ExtResource("3_rr481")
 
-[node name="PLayer" type="Sprite2D" parent="Player"]
+[node name="Player" type="Sprite2D" parent="Player"]
 texture = ExtResource("2_3d4xk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0.749977, -1.25)
 shape = SubResource("RectangleShape2D_hm0tb")
 
-[node name="Obstacle2" type="CharacterBody2D" parent="."]
-position = Vector2(75, 81)
-script = ExtResource("2_p1hja")
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
-[node name="Obstacle" type="Sprite2D" parent="Obstacle2"]
-texture = ExtResource("1_fwicu")
+[node name="Block" parent="." instance=ExtResource("8_e0eok")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2"]
-position = Vector2(-0.500031, -0.500015)
-shape = SubResource("RectangleShape2D_letb1")
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

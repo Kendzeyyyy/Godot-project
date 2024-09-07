@@ -1,12 +1,19 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-# Speed at which the block falls
-@export var fall_speed = 200.0
+@export var speed: float = 200.0  # Speed of the falling obstacle
 
-func _ready():
-	# Set initial downward velocity
-	linear_velocity = Vector2(0, fall_speed)
+func _process(delta: float) -> void:
+	# Move the obstacle downwards
+	var velocity2 = Vector2(0, speed * delta)
 
-func _on_visibility_notifier_2d_screen_exited():
+	# Move and detect collisions
+	var collision = move_and_collide(velocity2)
+	
+	# Log if a collision occurs
+	if collision:
+		print("Obstacle collided with: ", collision.get_collider())
+		get_tree().paused = true  # Pause the game
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
 	# Queue free when the block goes off-screen
 	queue_free()
