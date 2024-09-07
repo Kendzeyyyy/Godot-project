@@ -1,14 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccwikhpxf6k0y"]
+[gd_scene load_steps=4 format=3 uid="uid://ccwikhpxf6k0y"]
 
+[ext_resource type="Texture2D" uid="uid://00cpw442qx20" path="res://godot_background.png" id="1_20i36"]
 [ext_resource type="Texture2D" uid="uid://cbtf6m76dj5d" path="res://icon.svg" id="1_fwicu"]
 [ext_resource type="Script" path="res://Obstacle.gd" id="2_p1hja"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Obstacle" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(577.375, 326)
+scale = Vector2(0.864544, 0.487208)
+texture = ExtResource("1_20i36")
+
+[node name="Obstacle" type="Sprite2D" parent="Background"]
+position = Vector2(-581.087, -502.865)
+scale = Vector2(1.15668, 2.05251)
 texture = ExtResource("1_fwicu")
 script = ExtResource("2_p1hja")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background"]
+position = Vector2(-1002.12, -209.356)
+scale = Vector2(1.15668, 2.05251)
 
-[node name="RigidBody2D" type="RigidBody2D" parent="CollisionShape2D"]
+[node name="RigidBody2D" type="RigidBody2D" parent="Background/CollisionShape2D"]
