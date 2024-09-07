@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccwikhpxf6k0y"]
+[gd_scene load_steps=3 format=3 uid="uid://ccwikhpxf6k0y"]
 
 [ext_resource type="Texture2D" uid="uid://cbtf6m76dj5d" path="res://icon.svg" id="1_fwicu"]
+[ext_resource type="Script" path="res://Obstacle.gd" id="2_p1hja"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Obstacle" type="Sprite2D" parent="."]
 texture = ExtResource("1_fwicu")
+script = ExtResource("2_p1hja")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
