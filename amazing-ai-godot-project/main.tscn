@@ -1,56 +1,48 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccwikhpxf6k0y"]
+[gd_scene load_steps=8 format=3 uid="uid://bn8v4btywqeuv"]
 
-[ext_resource type="Texture2D" uid="uid://00cpw442qx20" path="res://godot_background.png" id="1_20i36"]
 [ext_resource type="Script" path="res://main.gd" id="1_def2p"]
-[ext_resource type="Texture2D" uid="uid://cbtf6m76dj5d" path="res://icon.svg" id="1_fwicu"]
-[ext_resource type="Texture2D" uid="uid://dnrvfsb55t75p" path="res://GodotPlayer.png" id="2_3d4xk"]
-[ext_resource type="Script" path="res://player.gd" id="3_rr481"]
-[ext_resource type="PackedScene" uid="uid://ljru4yxa7pnd" path="res://block.tscn" id="8_e0eok"]
+[ext_resource type="Texture2D" uid="uid://00cpw442qx20" path="res://godot_background.png" id="1_u7ng2"]
+[ext_resource type="Texture2D" uid="uid://dnrvfsb55t75p" path="res://GodotPlayer.png" id="2_0nskq"]
+[ext_resource type="Script" path="res://player.gd" id="2_o4a27"]
+[ext_resource type="PackedScene" uid="uid://ljru4yxa7pnd" path="res://block.tscn" id="6_smrg7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm0tb"]
-size = Vector2(100.5, 186.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8yo4"]
+size = Vector2(107.149, 193.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_letb1"]
-size = Vector2(118, 118)
-
-[sub_resource type="LabelSettings" id="LabelSettings_rq2dt"]
-font_size = 36
+[sub_resource type="LabelSettings" id="LabelSettings_b74at"]
+font_size = 32
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_def2p")
-script = ExtResource("1_xm6fh")
-block_scene = ExtResource("8_e0eok")
+block_scene = ExtResource("6_smrg7")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(577.375, 326)
-scale = Vector2(0.864544, 0.487208)
-texture = ExtResource("1_20i36")
+[node name="GodotBackground" type="Sprite2D" parent="."]
+position = Vector2(578.75, 324.75)
+scale = Vector2(0.8685, 0.481941)
+texture = ExtResource("1_u7ng2")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(82, 518)
-script = ExtResource("3_rr481")
+position = Vector2(594, 545)
+script = ExtResource("2_o4a27")
 
-[node name="Player" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_3d4xk")
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_0nskq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0.749977, -1.25)
-shape = SubResource("RectangleShape2D_hm0tb")
-
-[node name="Obstacle2" type="CharacterBody2D" parent="."]
-position = Vector2(75, 81)
-script = ExtResource("2_p1hja")
-
-[node name="Block" parent="." instance=ExtResource("8_e0eok")]
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+scale = Vector2(1.00348, 1)
+shape = SubResource("RectangleShape2D_e8yo4")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 426.0
-offset_top = 3.0
-offset_right = 611.0
-offset_bottom = 54.0
-label_settings = SubResource("LabelSettings_rq2dt")
+offset_left = 414.0
+offset_top = 7.0
+offset_right = 748.0
+offset_bottom = 118.0
+label_settings = SubResource("LabelSettings_b74at")
+
+[node name="Block" parent="." instance=ExtResource("6_smrg7")]
+position = Vector2(-72, -10)
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

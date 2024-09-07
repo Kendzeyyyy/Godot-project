@@ -21,11 +21,17 @@ func _process(delta: float) -> void:
 	# Move the player and detect collisions
 	var collision = move_and_collide(velocity2)
 	
-	# Log if a collision occurs
+	# Clamp the player within screen bounds
+	var screen_size = get_viewport_rect().size
+	var collisionNode = get_node("CollisionShape2D")
+	var width = 0
+	
+	if collisionNode != null:
+		width = collisionNode.shape.size.x
+
 	if collision:
 		print("Player collided with: ", collision.get_collider())
 		get_tree().paused = true  # Pause the game
-
-	# Clamp the player within screen bounds
-	var screen_size = get_viewport_rect().size
-	position.x = clamp(position.x, 0, screen_size.x)
+		
+	position.x = clamp(position.x, width/2, screen_size.x-width/2)
+	
