@@ -5,11 +5,11 @@ var score = 0
 var spawn_rate = 1.0  # Time between spawns
 
 # Declare nodes
-onready var score_label = $Control/Label  # Reference to the score label
-onready var game_over_container = $Control/VBoxContainer
-onready var final_score_label = $Control/VBoxContainer/Label[1]  # The second label in the VBoxContainer
-onready var spawn_timer = $Timer
-onready var player = $Player
+@onready var score_label = $Control/Label  # Reference to the score label
+@onready var game_over_container = $Control/VBoxContainer
+#@onready var final_score_label = $Control/VBoxContainer/Label[1]  # The second label in the VBoxContainer
+@onready var spawn_timer = $Timer
+@onready var player = $Player
 
 # Called when the node enters the scene tree for the first time
 func _ready():
@@ -36,7 +36,7 @@ func player_is_hit():
 # Handles the game over state
 func game_over():
 	print("Game Over! Your score is: ", int(score))
-	final_score_label.text = "Final Score: " + str(int(score))
+	#final_score_label.text = "Final Score: " + str(int(score))
 	game_over_container.visible = true  # Show the Game Over UI
 	get_tree().paused = true  # Pause the game
 

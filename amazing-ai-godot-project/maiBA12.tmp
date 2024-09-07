@@ -1,18 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccwikhpxf6k0y"]
+[gd_scene load_steps=11 format=3 uid="uid://ccwikhpxf6k0y"]
 
+[ext_resource type="Script" path="res://Main.gd" id="1_0gt6p"]
 [ext_resource type="Texture2D" uid="uid://00cpw442qx20" path="res://godot_background.png" id="1_20i36"]
 [ext_resource type="Texture2D" uid="uid://cbtf6m76dj5d" path="res://icon.svg" id="1_fwicu"]
 [ext_resource type="Texture2D" uid="uid://dnrvfsb55t75p" path="res://GodotPlayer.png" id="2_3d4xk"]
 [ext_resource type="Script" path="res://Obstacle.gd" id="2_p1hja"]
 [ext_resource type="Script" path="res://player.gd" id="3_rr481"]
+[ext_resource type="Script" path="res://block.gd" id="7_42asr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hm0tb"]
 size = Vector2(100.5, 186.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_letb1"]
-size = Vector2(118, 118)
+size = Vector2(91, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ye6d"]
+size = Vector2(218, 190)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_0gt6p")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(577.375, 326)
@@ -23,7 +29,7 @@ texture = ExtResource("1_20i36")
 position = Vector2(82, 518)
 script = ExtResource("3_rr481")
 
-[node name="Player" type="Sprite2D" parent="Player"]
+[node name="PLayer" type="Sprite2D" parent="Player"]
 texture = ExtResource("2_3d4xk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -38,8 +44,18 @@ script = ExtResource("2_p1hja")
 texture = ExtResource("1_fwicu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
-position = Vector2(0, -1)
+position = Vector2(-0.500031, -0.500015)
 shape = SubResource("RectangleShape2D_letb1")
+
+[node name="SpawningObstacles" type="RigidBody2D" parent="."]
+position = Vector2(75, 81)
+script = ExtResource("7_42asr")
+
+[node name="Obstacles" type="Sprite2D" parent="SpawningObstacles"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawningObstacles"]
+position = Vector2(191, 44)
+shape = SubResource("RectangleShape2D_0ye6d")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
