@@ -3,6 +3,8 @@ class_name Obstacle
 # Variables
 var score = 0
 var spawn_rate = 1.0  # Time between spawns
+var min_spawn_x = 0
+var max_spawn_x = 1000
 
 # Declare nodes
 @onready var score_label = $ScoreLabel  # Reference to the score label
@@ -10,16 +12,22 @@ var spawn_rate = 1.0  # Time between spawns
 #@onready var final_score_label = $Control/VBoxContainer/Label[1]  # The second label in the VBoxContainer
 @onready var spawn_timer = $Timer
 @onready var player = $Player
+@export var block_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time
 func _ready():
-	spawn_timer.start(spawn_rate)
+	$Timer.wait_time = spawn_rate
+	$Timer.start()
+	
+func _on_Timer_timeout():
+	spawn_obstacle()
 
-# Called every frame, handles score updates and game logic
-func _process(delta):
-	update_score(delta)
-	if player_is_hit():
-		game_over()
+func spawn_obstacle():
+	var block = block_scene.instantiate()
+	var random_x = randf_range(min_spawn_x, max_spawn_x)
+	
+	block.position = Vector2(random_x, 0)
+	add_child(block)
 
 # Updates the score over time
 func update_score(delta):

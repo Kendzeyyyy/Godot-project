@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 	# Log if a collision occurs
 	if collision:
 		print("Player collided with: ", collision.get_collider())
+		get_tree().paused = true  # Pause the game
 
 	# Clamp the player within screen bounds
 	var screen_size = get_viewport_rect().size

@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	# Log if a collision occurs
 	if collision:
 		print("Obstacle collided with: ", collision.get_collider())
-	
-	# Free the obstacle if it goes off-screen (optional)
-	if position.y > get_viewport_rect().size.y:
-		queue_free()
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	# Queue free when the block goes off-screen
+	queue_free()
