@@ -1,11 +1,11 @@
 extends Node2D  # This extends the Node2D class (the base class for 2D nodes)
-
+class_name Obstacle
 # Variables
 var score = 0
 var spawn_rate = 1.0  # Time between spawns
 
 # Declare nodes
-@onready var score_label = $Control/Label  # Reference to the score label
+@onready var score_label = $ScoreLabel  # Reference to the score label
 @onready var game_over_container = $Control/VBoxContainer
 #@onready var final_score_label = $Control/VBoxContainer/Label[1]  # The second label in the VBoxContainer
 @onready var spawn_timer = $Timer

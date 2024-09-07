@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccwikhpxf6k0y"]
+[gd_scene load_steps=10 format=3 uid="uid://ccwikhpxf6k0y"]
 
 [ext_resource type="Texture2D" uid="uid://00cpw442qx20" path="res://godot_background.png" id="1_20i36"]
+[ext_resource type="Script" path="res://main.gd" id="1_def2p"]
 [ext_resource type="Texture2D" uid="uid://cbtf6m76dj5d" path="res://icon.svg" id="1_fwicu"]
 [ext_resource type="Texture2D" uid="uid://dnrvfsb55t75p" path="res://GodotPlayer.png" id="2_3d4xk"]
 [ext_resource type="Script" path="res://Obstacle.gd" id="2_p1hja"]
@@ -12,7 +13,11 @@ size = Vector2(100.5, 186.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_letb1"]
 size = Vector2(118, 118)
 
+[sub_resource type="LabelSettings" id="LabelSettings_rq2dt"]
+font_size = 36
+
 [node name="Main" type="Node2D"]
+script = ExtResource("1_def2p")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(577.375, 326)
@@ -43,3 +48,10 @@ shape = SubResource("RectangleShape2D_letb1")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 426.0
+offset_top = 3.0
+offset_right = 611.0
+offset_bottom = 54.0
+label_settings = SubResource("LabelSettings_rq2dt")
