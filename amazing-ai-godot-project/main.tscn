@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn8v4btywqeuv"]
+[gd_scene load_steps=8 format=3 uid="uid://ccwikhpxf6k0y"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_def2p"]
 [ext_resource type="Texture2D" uid="uid://00cpw442qx20" path="res://godot_background.png" id="1_u7ng2"]
