@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccwikhpxf6k0y"]
+[gd_scene load_steps=9 format=3 uid="uid://bn8v4btywqeuv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_def2p"]
 [ext_resource type="Texture2D" uid="uid://00cpw442qx20" path="res://godot_background.png" id="1_u7ng2"]
 [ext_resource type="Texture2D" uid="uid://dnrvfsb55t75p" path="res://GodotPlayer.png" id="2_0nskq"]
 [ext_resource type="Script" path="res://player.gd" id="2_o4a27"]
+[ext_resource type="AudioStream" uid="uid://1eohudixeb4e" path="res://GameMusic.wav" id="6_rtdjk"]
 [ext_resource type="PackedScene" uid="uid://ljru4yxa7pnd" path="res://block.tscn" id="6_smrg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8yo4"]
@@ -45,5 +46,8 @@ label_settings = SubResource("LabelSettings_b74at")
 
 [node name="Block" parent="." instance=ExtResource("6_smrg7")]
 position = Vector2(-72, -10)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rtdjk")
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

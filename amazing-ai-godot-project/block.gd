@@ -12,6 +12,8 @@ func _process(delta: float) -> void:
 	# Log if a collision occurs
 	if collision:
 		print("Obstacle collided with: ", collision.get_collider())
+		var playSound = $AudioStreamPlayerDead  # Reference to the AudioStreamPlayer node
+		playSound.play() 
 		get_tree().paused = true  # Pause the game
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

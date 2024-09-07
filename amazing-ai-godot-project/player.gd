@@ -31,7 +31,10 @@ func _process(delta: float) -> void:
 
 	if collision:
 		print("Player collided with: ", collision.get_collider())
+		var playSound = $AudioStreamPlayerDead  # Reference to the AudioStreamPlayer node
+		playSound.play() 
 		get_tree().paused = true  # Pause the game
 		
 	position.x = clamp(position.x, width/2, screen_size.x-width/2)
+
 	

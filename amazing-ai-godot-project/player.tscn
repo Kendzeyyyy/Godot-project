@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://cwwydcqkjjka5"]
+[gd_scene load_steps=2 format=3 uid="uid://cwwydcqkjjka5"]
+
+[ext_resource type="AudioStream" uid="uid://dqg3j7obv3bmi" path="res://DeadMusic.wav" id="1_b3mwu"]
 
 [node name="Player" type="Node2D"]
+
+[node name="AudioStreamPlayerDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_b3mwu")

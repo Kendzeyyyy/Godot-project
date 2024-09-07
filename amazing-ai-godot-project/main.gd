@@ -18,6 +18,8 @@ var max_spawn_x = 1000
 func _ready():
 	$Timer.wait_time = spawn_rate
 	$Timer.start()
+	var music_player = $AudioStreamPlayer  # Adjust this path if your AudioStreamPlayer node is elsewhere
+	music_player.play()  # Play the background music when the scene starts
 	
 func _process(delta):
 	update_score(delta)

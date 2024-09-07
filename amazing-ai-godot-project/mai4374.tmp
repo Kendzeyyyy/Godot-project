@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn8v4btywqeuv"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_def2p"]
+[ext_resource type="Texture2D" uid="uid://00cpw442qx20" path="res://godot_background.png" id="1_u7ng2"]
+[ext_resource type="Texture2D" uid="uid://dnrvfsb55t75p" path="res://GodotPlayer.png" id="2_0nskq"]
+[ext_resource type="Script" path="res://player.gd" id="2_o4a27"]
+[ext_resource type="AudioStream" uid="uid://1eohudixeb4e" path="res://GameMusic.wav" id="6_rtdjk"]
+[ext_resource type="PackedScene" uid="uid://ljru4yxa7pnd" path="res://block.tscn" id="6_smrg7"]
+[ext_resource type="AudioStream" uid="uid://dqg3j7obv3bmi" path="res://DeadMusic.wav" id="7_gmjqf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8yo4"]
+size = Vector2(107.149, 193.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b74at"]
+font_size = 32
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_def2p")
+block_scene = ExtResource("6_smrg7")
+
+[node name="GodotBackground" type="Sprite2D" parent="."]
+position = Vector2(578.75, 324.75)
+scale = Vector2(0.8685, 0.481941)
+texture = ExtResource("1_u7ng2")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(594, 545)
+script = ExtResource("2_o4a27")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_0nskq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(1.00348, 1)
+shape = SubResource("RectangleShape2D_e8yo4")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 414.0
+offset_top = 7.0
+offset_right = 748.0
+offset_bottom = 118.0
+label_settings = SubResource("LabelSettings_b74at")
+
+[node name="Block" parent="." instance=ExtResource("6_smrg7")]
+position = Vector2(-72, -10)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rtdjk")
+
+[node name="AudioStreamPlayerDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gmjqf")
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
